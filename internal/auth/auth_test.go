@@ -3,8 +3,6 @@ package auth
 import (
 	"net/http"
 	"testing"
-
-	"github.com/bootdotdev/learn-cicd-starter/internal/auth"
 )
 
 func TestGetAPIKey(t *testing.T) {
@@ -44,7 +42,7 @@ func TestGetAPIKey(t *testing.T) {
 				err    error
 			}{
 				apikey: "",
-				err:    auth.ErrNoAuthHeaderIncluded,
+				err:    ErrNoAuthHeaderIncluded,
 			},
 		},
 		{
@@ -55,7 +53,7 @@ func TestGetAPIKey(t *testing.T) {
 				err    error
 			}{
 				apikey: "",
-				err:    auth.ErrNoAuthHeaderIncluded,
+				err:    ErrNoAuthHeaderIncluded,
 			},
 		},
 		{
@@ -66,7 +64,7 @@ func TestGetAPIKey(t *testing.T) {
 				err    error
 			}{
 				apikey: "",
-				err:    auth.ErrNoAuthKeyInHeader,
+				err:    ErrNoAuthKeyInHeader,
 			},
 		},
 		{
@@ -77,12 +75,12 @@ func TestGetAPIKey(t *testing.T) {
 				err    error
 			}{
 				apikey: "",
-				err:    auth.ErrNoAuthKeyInHeader,
+				err:    ErrNoAuthKeyInHeader,
 			},
 		},
 	}
 	for _, tc := range tests {
-		apiKey, err := auth.GetAPIKey(tc.input)
+		apiKey, err := GetAPIKey(tc.input)
 		if apiKey != tc.want.apikey {
 			t.Errorf("%s: expected apikey %v, got %v", tc.name, tc.want.apikey, apiKey)
 		}
