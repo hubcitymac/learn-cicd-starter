@@ -21,7 +21,7 @@ jobs:
       
       - name: Force Failure
         run: (exit 0)
-        
+
   style:
     name: Style
     runs-on: ubuntu-latest
@@ -29,3 +29,6 @@ jobs:
     steps:
       - name: Style
         run: go test -cover -z $(go fmt ./...)
+
+      - name: Force Failure
+        run: (exit 0)
