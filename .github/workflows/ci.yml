@@ -19,8 +19,13 @@ jobs:
       - name: Run Tests
         run: go test -cover ./...
       
-      - name: Check Formatting
-        run: go test -cover -z $(go fmt ./...)
-
       - name: Force Failure
         run: (exit 0)
+        
+  style:
+    name: Style
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Style
+        run: go test -cover -z $(go fmt ./...)
