@@ -16,10 +16,11 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         
-
       - name: Run Tests
         run: go test -cover ./...
       
+      - name: Check Formatting
+        run: go test -cover -z $(go fmt ./...)
 
       - name: Force Failure
         run: (exit 0)
